@@ -1,0 +1,28 @@
+{
+  "name": "dm-iso-360",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test:ai:fallback": "node --test src/engines/ai-analyzer/geminiClient.test.ts",
+    "test:ai:gemini": "node --env-file=.env.local --experimental-strip-types src/engines/ai-analyzer/smokeGemini.ts",
+    "test:ai:assistant:fallback": "node --test src/app/api/assistant/route.test.ts",
+    "test:ai:assistant": "node --env-file=.env.local --experimental-strip-types src/app/api/assistant/smokeAssistant.ts",
+    "test:ai:fallback:all": "npm run test:ai:fallback && npm run test:ai:assistant:fallback",
+    "test:ai:all": "npm run test:ai:fallback && npm run test:ai:assistant:fallback && npm run test:ai:gemini && npm run test:ai:assistant"
+  },
+  "dependencies": {
+    "next": "15.2.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}
